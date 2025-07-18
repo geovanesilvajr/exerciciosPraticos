@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=
+    , initial-scale=1.0"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="titulo">Texto original</h1>
+    <input id="inputText" type="text" />
+    <button id="botao">Mensagem</button>
+    <p id="paragrafo"></p>
+
+    <script>
+      const titulo = document.getElementById("titulo");
+      const input = document.getElementById("inputText");
+      const botao = document.getElementById("botao");
+      const paragrafo = document.getElementById("paragrafo");
+
+      titulo.textContent = "Titulo Alterado";
+      input.placeholder = "Digite sua mensagem";
+      botao.addEventListener("click", () => {
+        const textoDigitado = input.value;
+        paragrafo.textContent = `Você digitou: ${textoDigitado}`;
+      });
+    </script>
+  </body>
+</html>
