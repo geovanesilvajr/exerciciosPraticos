@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin: 10px 0;
+        min-height: 50px;
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+    <button id="botaoTexto">Adicionar texto</button>
+    <button id="botaoHtml">Html formatado</button>
+    <button id="botaoLimpar">Limpar conteudo</button>
+
+    <script>
+      const container = document.getElementById("container");
+      const botaoTexto = document.getElementById("botaoTexto");
+      const botaoHtml = document.getElementById("botaoHtml");
+      const botaoLimpar = document.getElementById("botaoLimpar");
+
+      botaoTexto.addEventListener("click", () => {
+        container.textContent = "Este é um texto simples sem formatação!";
+      });
+
+      botaoHtml.addEventListener("click", () => {
+        container.innerHTML =
+          '<strong>Este é um texto com formatação<strong> e <span style="color:blue;">cores</span> !';
+      });
+
+      botaoLimpar.addEventListener("click", () => {
+        container.innerHTML = "";
+      });
+    </script>
+  </body>
+</html>

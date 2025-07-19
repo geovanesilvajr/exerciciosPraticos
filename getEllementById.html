@@ -23,9 +23,17 @@
 
       titulo.textContent = "Titulo Alterado";
       input.placeholder = "Digite sua mensagem";
+
       botao.addEventListener("click", () => {
-        const textoDigitado = input.value;
-        paragrafo.textContent = `Você digitou: ${textoDigitado}`;
+        const textoDigitado = input.value.trim();
+        if (textoDigitado === "") {
+          paragrafo.textContent = "Digite sua mensagem";
+          paragrafo.style.color = "red";
+        } else {
+          paragrafo.textContent = `Você digitou: ${textoDigitado}`;
+          paragrafo.style.color = "black";
+          input.value = "";
+        }
       });
     </script>
   </body>
