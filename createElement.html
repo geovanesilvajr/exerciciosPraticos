@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      li {
+        margin: 5px 0;
+      }
+      button {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <input id="input" type="text" />
+    <button id="button">Adicionar</button>
+    <div id="list"></div>
+
+    <script>
+      const input = document.getElementById("input");
+      const botaoAdicionar = document.getElementById("button");
+      const listaContainer = document.getElementById("list");
+
+      botaoAdicionar.addEventListener("click", () => {
+        const textItem = input.value.trim();
+        if (!textItem) return;
+
+        const newItem = document.createElement("li");
+        const btnRemove = document.createElement("button");
+
+        newItem.textContent = textItem;
+        btnRemove.textContent = "Excluir";
+
+        btnRemove.addEventListener("click", () => {
+          newItem.remove();
+        });
+
+        newItem.appendChild(btnRemove);
+
+        let ul = listaContainer.querySelector("ul");
+        if (!ul) {
+          ul = document.createElement("ul");
+          listaContainer.appendChild(ul);
+        }
+
+        ul.appendChild(newItem);
+
+        input.value = "";
+      });
+    </script>
+  </body>
+</html>
