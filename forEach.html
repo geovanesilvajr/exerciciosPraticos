@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Minha Lista de frutas</h1>
+    <ul id="lista-frutas"></ul>
+
+    <script>
+      const frutas = ["maça", "banana", "laranja", "uva", "pera"];
+
+      const lista = document.getElementById("lista-frutas");
+
+      frutas.forEach((fruta) => {
+        const itemLista = document.createElement("li");
+        itemLista.textContent = fruta;
+        lista.appendChild(itemLista);
+      });
+    </script>
+  </body>
+</html>
