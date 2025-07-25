@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .container {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        font: arial;
+        max-width: 300px;
+      }
+
+      .destaque {
+        color: purple;
+        font-weight: bold;
+      }
+    </style>
+
+    <div id="card-container"></div>
+
+    <script>
+      const pessoa = {
+        nome: "João",
+        idade: 36,
+        profissao: "Engenheiro de Software",
+        hobbies: ["dançar", "ler", "cozinhar", "estudar"],
+      };
+
+      const container = document.getElementById("card-container");
+
+      const hobbiesList = pessoa.hobbies
+        .map(
+          (hobbie) => `
+      <li><span class="destaque">${hobbie}</span></li>`
+        )
+        .join("");
+
+      container.innerHTML = `
+      <div class="container">
+    <h2>${pessoa.nome}</h2>
+    <p>Idade:<span class="destaque"> ${pessoa.idade}</span></p>
+    <p>Profissão: ${pessoa.profissao}</p>
+    <h3>Hobbies:</h3>
+    <ul>${hobbiesList}</ul>
+    </div>
+    `;
+    </script>
+  </body>
+</html>
