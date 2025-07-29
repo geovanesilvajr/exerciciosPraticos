@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+<style>
+.tema-claro{
+    background-color:#fff;
+    color: black;
+}
+
+.tema-escuro{
+    background-color: #333;
+    color: white;
+}
+button{
+    margin: 10px;
+    padding: 8px 16px;
+}
+
+</style>
+
+  </head>
+  <body class="tema-claro">
+    <h1">Seletor de tema</h1>
+    <button id="btnTema">Alternar para tema escuro</button>
+
+<script>
+const body = document.body;
+const btnTema = document.getElementById('btnTema');
+
+const temaSalvo = localStorage.getItem('tema');
+temaSalvo === 'escuro' ? body.classList.add('tema-escuro') : body.classList.remove('tema-escuro');
+
+
+btnTema.textContent = temaSalvo === 'escuro' ? 'Alternar para tema claro' : 'Alternar para tema Escuro';
+
+btnTema.addEventListener('click', () => {
+    body.classList.toggle('tema-escuro');
+
+const temaAtual = body.classList.contains('tema-escuro') ? 'escuro' : 'claro';
+localStorage.setItem('tema', temaAtual);
+
+btnTema.textContent = temaAtual === 'escuro' ? 'Alternar para tema Claro' : 'Alternar para tema escuro';
+    
+})
+
+
+</script>
+
+
+
+  </body>
+</html>
