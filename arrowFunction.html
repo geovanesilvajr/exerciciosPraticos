@@ -16,10 +16,35 @@
     <p id="resultado"></p>
 
     <script>
+      // Seleção de elementos
       const inputTemp = document.getElementById("inputTemp");
       const escalaOrigem = document.getElementById("escalaOrigem");
       const btnConverter = document.getElementById("btnConverter");
       const resultado = document.getElementById("resultado");
+
+      // Arrow functions de conversão
+      const celsiusParaFahrenheit = (celsius) => (celsius * 9) / 5 + 32;
+      const fahrenheitParaCelsius = (fahrenheit) => ((fahrenheit - 32) * 5) / 9;
+
+      // Event listener com arrow function
+      btnConverter.addEventListener("click", () => {
+        const temperatura = parseFloat(inputTemp.value);
+        if (isNaN(temperatura)) {
+          resultado.textContent = "Digite um número válido!";
+          return;
+        }
+
+        const conversao =
+          escalaOrigem.value === "celsius"
+            ? `${temperatura}°C = ${celsiusParaFahrenheit(temperatura).toFixed(
+                1
+              )}°F`
+            : `${temperatura}°F = ${fahrenheitParaCelsius(temperatura).toFixed(
+                1
+              )}°C`;
+
+        resultado.textContent = conversao;
+      });
     </script>
   </body>
 </html>
