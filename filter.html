@@ -7,8 +7,10 @@
   </head>
   <body>
     <h1>Produtos</h1>
+    <button id="btn-produtos">Todos Produtos</button>
     <button id="btn-caros">Produtos acima de 50 reais</button>
     <button id="btn-estoque">Produtos em estoque</button>
+    <button id="btn-letraA">Produtos com a Letra "A"</button>
     <ul id="lista-produtos"></ul>
 
     <script>
@@ -28,20 +30,48 @@
       const btnFiltrarCaros = document.getElementById("btn-caros");
       const btnFiltrarEstoque = document.getElementById("btn-estoque");
       const listaProdutos = document.getElementById("lista-produtos");
+      const BtnProdutosComA = document.getElementById("btn-letraA");
+      const btnTodosProdutos = document.getElementById("btn-produtos");
 
       function renderizarProdutos(produtosFiltrados) {
         listaProdutos.innerHTML = produtosFiltrados
           .map(
             (produto) => `
-        <li>
-            ${produto.nome} - R$: ${produto.preco.toFixed(2)} (Estoque: ${
+              <li>
+                  ${produto.nome} - R$: ${produto.preco.toFixed(2)} (Estoque: ${
               produto.estoque
             })
-            </li>
-        `
+                  </li>
+              `
           )
           .join("");
       }
+
+      btnFiltrarCaros.addEventListener("click", () => {
+        const produtosCaros = produtos.filter(
+          (produtos) => produtos.preco > 50
+        );
+        renderizarProdutos(produtosCaros);
+      });
+
+      btnFiltrarEstoque.addEventListener("click", () => {
+        const produtosEmEstoque = produtos.filter(
+          (produtos) => produtos.estoque > 0
+        );
+        renderizarProdutos(produtosEmEstoque);
+      });
+
+      BtnProdutosComA.addEventListener("click", () => {
+        const produtosComA = produtos.filter((produtos) =>
+          produtos.nome.toLowerCase().includes("a")
+        );
+        renderizarProdutos(produtosComA);
+      });
+
+      btnTodosProdutos.addEventListener("click", () => {
+        const todosProdutos = produtos;
+        renderizarProdutos(todosProdutos);
+      });
     </script>
   </body>
 </html>
