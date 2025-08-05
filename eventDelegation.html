@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Lista de Tarefas</title>
+    <style>
+      .concluida {
+        text-decoration: line-through;
+        opacity: 0.7;
+      }
+      button {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Minhas Tarefas</h1>
+    <input type="text" id="novaTarefa" placeholder="Digite uma tarefa" />
+    <button id="btnAdicionar">Adicionar</button>
+    <button id="btnLimpar">Excluir Todas Tarefas</button>
+    <ul id="listaTarefas"></ul>
+
+    <script>
+      const listaTarefas = document.getElementById("listaTarefas");
+      const inputTarefa = document.getElementById("novaTarefa");
+
+      document.getElementById("btnAdicionar").addEventListener("click", () => {
+        const texto = inputTarefa.value.trim();
+        if (!texto) return;
+
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+      <span>${texto}</span>
+      <button class="btnConcluir">Concluir</button>
+      <button class="btnExcluir">Excluir</button>
+      `;
+        listaTarefas.appendChild(li);
+        inputTarefa.value = "";
+      });
+
+      listaTarefas.addEventListener("click", (e) => {
+        const elementoClicado = e.target;
+
+        if (elementoClicado.classList.contains("btnConcluir")) {
+          const tarefa = elementoClicado.closest("li");
+          tarefa.classList.toggle("concluida");
+        }
+
+        if (elementoClicado.classList.contains("btnExcluir")) {
+          const tarefa = elementoClicado.closest("li").remove();
+        }
+      });
+
+      document.body.addEventListener("click", (e) => {
+        if (e.target.id === "btnLimpar") {
+          listaTarefas.innerHTML = "";
+        }
+      });
+    </script>
+  </body>
+</html>
