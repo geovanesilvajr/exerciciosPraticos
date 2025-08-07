@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .concluida {
+        text-decoration: line-through;
+        opacity: 0.7;
+      }
+      #listaTarefas {
+        margin-top: 20px;
+      }
+
+      button {
+        margin-left: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Minhas Tarefas</h1>
+    <input type="text" id="novaTarefa" placeholder="Digite uma tarefa" />
+    <button id="btnAdicionar">Adicionar</button>
+    <ul id="listaTarefas"></ul>
+
+    <script>
+      // Array para armazenar tarefas
+
+      let tarefas = [];
+
+      // Elementos do DOM
+
+      const inputTarefa = document.getElementById("novaTarefa");
+      const btnAdicionar = document.getElementById("btnAdicionar");
+      const listaTarefas = document.getElementById("listaTarefas");
+
+      // Formato de uma tarefa:
+      // { id: Date.now(), texto: string, concluida: boolean }
+
+      // Salva tarefas no localStorage
+
+      function salvarTarefas() {
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+      }
+
+      // Carrega tarefas do localStorage ao iniciar
+
+      function carregarTarefas() {
+        const tarefasSalvas = localStorage.getItem("tarefas");
+        if (tarefasSalvas) {
+          tarefas = JSON.parse(tarefasSalvas);
+          renderizarTarafas();
+        }
+      }
+
+      // Chama ao carregar a página
+      carregarTarefas();
+
+      // Adiciona nova tarefa
+      btnAdicionar.addEventListener("click", () => {
+        const texto = inputTarefa.value.trim();
+        if (!texto) {
+          return;
+        }
+
+        tarefas.push({
+          id: date.now(),
+          texto: texto,
+          concluida: false,
+        });
+
+        inputTarefa.value = "";
+        salvarTarefas();
+        renderizarTarafas();
+      });
+
+      // Renderiza todas as tarefas
+    </script>
+  </body>
+</html>
